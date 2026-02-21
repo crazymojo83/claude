@@ -1,15 +1,14 @@
 ---
-category: 'coding'
-label: 'React'
+slug: 'gateway-crashes-model-woes-going-full-local'
+category: 'ai'
+label: 'OpenClaw'
 date: 'Feb 2026'
 readTime: '6 min read'
-title: 'Gateway Crashes, Model Woes, and Going Full Local (Feb 19, 2026
-'
-excerpt: 'gateway crashes'
+title: 'Gateway Crashes, Model Woes, and Going Full Local'
+excerpt: 'Three separate issues hit on the same day — a rogue cron job crashing the gateway, NVIDIA model limitations, and unrecoverable crashes. All three fixed, now running 100% local on Ollama.'
 ---
 
-
-# 🦞 Gateway Crashes, Model Woes, and Going Full Local (Feb 19, 2026)
+# Gateway Crashes, Model Woes, and Going Full Local
 
 > **TL;DR:** Three separate issues hit on the same day — a rogue cron job crashing the gateway via an EBADF bug, NVIDIA's Llama 3.3 70B rejecting parallel tool calls, and the gateway not recovering after crashes. All three fixed. Setup is now 100% local on Ollama with a self-healing gateway.
 
@@ -18,6 +17,7 @@ excerpt: 'gateway crashes'
 ## Issue 1: Gateway Keeps Shutting Down
 
 ### Symptom
+
 The OpenClaw gateway was repeatedly crashing and not coming back. Running `openclaw gateway status` showed:
 
 ```
@@ -94,6 +94,7 @@ goto loop
 ## Issue 2: `400 This model only supports single tool-calls at once!`
 
 ### Symptom
+
 After restoring the gateway, all agent interactions failed with:
 
 ```
@@ -113,7 +114,7 @@ Tested all promising NVIDIA models via the API. Key results:
 | Model | Tool Support | Notes |
 |---|---|---|
 | `meta/llama-3.3-70b-instruct` | Single only | Hard 400 error |
-| `meta/llama-4-scout-17b-16e-instruct` | **Parallel ✓** | 3 simultaneous tool calls confirmed |
+| `meta/llama-4-scout-17b-16e-instruct` | **Parallel** | 3 simultaneous tool calls confirmed |
 | `meta/llama-4-maverick-17b-128e-instruct` | Unclear | Hit token limit in test |
 | `mistralai/mistral-large-2-instruct` | Unclear | Didn't call tools in test |
 | `nvidia/llama-3.1-nemotron-70b-instruct` | Unclear | Didn't call tools in test |
@@ -121,16 +122,19 @@ Tested all promising NVIDIA models via the API. Key results:
 `meta/llama-4-scout-17b-16e-instruct` was the only model that demonstrated genuine parallel tool call support — it called `get_weather` (twice, for different cities) and `web_search` in a single response.
 
 ### Fix
+
 Switched primary model to `nvidia/meta/llama-4-scout-17b-16e-instruct` in `openclaw.json`.
 
 ---
 
-## Issue 3 / Final Setup — Going Fully Local
+## Issue 3: Going Fully Local
 
 ### Motivation
+
 NVIDIA's API behavior was unpredictable (policy changes, model limitations). With an RTX 5060 Ti on-hand, there was no reason to depend on cloud APIs.
 
 ### Hardware
+
 - **GPU:** NVIDIA GeForce RTX 5060 Ti — **16 GB VRAM**
 - **RAM:** 64 GB
 - **CPU:** Intel Core Ultra 7 265F (20 cores)
@@ -141,11 +145,11 @@ Checked all installed Ollama models for tool-calling capability:
 
 | Model | Size | Tools | Thinking | Context | Verdict |
 |---|---|---|---|---|---|
-| `gpt-oss:20b` | 13 GB | ✓ | ✓ | 131K | **Best — use as primary** |
-| `qwen3:8b` | 5.2 GB | ✓ | ✓ | 41K | Good fallback |
-| `qwen2.5-coder:14b` | 9.0 GB | ✓ | ✗ | 32K | Coding tasks |
-| `deepseek-r1:14b` | 9.0 GB | **✗** | ✓ | 131K | **Removed — no tools** |
-| `llama3.2:latest` | 2.0 GB | ? | ✗ | — | Too small |
+| `gpt-oss:20b` | 13 GB | Yes | Yes | 131K | **Best — use as primary** |
+| `qwen3:8b` | 5.2 GB | Yes | Yes | 41K | Good fallback |
+| `qwen2.5-coder:14b` | 9.0 GB | Yes | No | 32K | Coding tasks |
+| `deepseek-r1:14b` | 9.0 GB | **No** | Yes | 131K | **Removed — no tools** |
+| `llama3.2:latest` | 2.0 GB | ? | No | — | Too small |
 
 `deepseek-r1:14b` was pulled for reasoning but has **no tool support** — useless for OpenClaw. Removed.
 
@@ -153,7 +157,7 @@ Checked all installed Ollama models for tool-calling capability:
 
 **`qwen3:14b`** (9.3 GB, Q4_K_M) — significant upgrade over `qwen3:8b`, tools + thinking, fits comfortably in 16 GB VRAM.
 
-```
+```bash
 ollama pull qwen3:14b
 ollama rm deepseek-r1:14b
 ```
