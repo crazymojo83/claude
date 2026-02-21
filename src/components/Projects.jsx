@@ -7,11 +7,11 @@ function Projects() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    // We are pulling from the user crazymojo83 (found in existing package.json context)
+    // We are pulling from the user stevemojica
     const fetchRepos = async () => {
       try {
         const response = await fetch(
-          'https://api.github.com/users/crazymojo83/repos?sort=updated&per_page=6'
+          'https://api.github.com/users/stevemojica/repos?sort=updated&per_page=6'
         )
         if (!response.ok) {
           throw new Error('Failed to fetch repositories')

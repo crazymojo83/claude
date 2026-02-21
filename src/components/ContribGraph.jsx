@@ -24,7 +24,7 @@ function ContribGraph() {
   return (
     <div className="contrib-graph">
       <GitHubCalendar
-        username="crazymojo83"
+        username="stevemojica"
         theme={explicitTheme}
         colorScheme="dark"
         blockSize={12}
