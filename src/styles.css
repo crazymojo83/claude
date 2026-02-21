@@ -96,6 +96,11 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+.contact-section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -729,6 +734,23 @@ body {
   font-weight: 500;
 }
 
+.social-embeds-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 3rem auto 0;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.embed-card {
+  flex: 1 1 calc(50% - 0.5rem);
+  min-width: 320px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -1233,7 +1255,7 @@ body {
 .contact-section {
   text-align: center;
   padding: 5rem 2rem;
-  max-width: 600px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 

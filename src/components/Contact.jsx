@@ -1,4 +1,26 @@
+import { useEffect } from 'react';
+
 function Contact() {
+  useEffect(() => {
+    // If the window object already has twttr, instruct it to parse the new anchors
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load();
+    } else {
+      // Otherwise inject the script. Wait for it to load to parse the embedded timeline.
+      const script = document.createElement("script");
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.async = true;
+      script.charSet = "utf-8";
+      document.body.appendChild(script);
+
+      return () => {
+        if (document.body.contains(script)) {
+          document.body.removeChild(script);
+        }
+      };
+    }
+  }, []);
+
   return (
     <>
       <div className="divider" />
@@ -48,6 +70,51 @@ function Contact() {
           >
             &#128172; Twitter / X
           </a>
+          <a
+            href="https://www.threads.com/@stevemojica?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contact-link"
+          >
+            &#128172; Threads
+          </a>
+        </div>
+
+        {/* Side-by-Side Social Media Previews */}
+        <div className="social-embeds-grid">
+          {/* Threads Custom Block (Pending Official Meta Widget API) */}
+          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', minHeight: '400px' }}>
+            <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on Threads</h3>
+            <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+              <p style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
+                Join the conversation on AI agents, homelab infrastructure, and technology leadership.
+              </p>
+              <a
+                href="https://www.threads.com/@stevemojica?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-link"
+                style={{ margin: '0 auto' }}
+              >
+                &#128172; Follow on Threads
+              </a>
+            </div>
+          </div>
+
+          {/* Twitter (X) Official Embed */}
+          <div className="embed-card" style={{ minHeight: '400px' }}>
+            <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on X</h3>
+            <div style={{ width: '100%', overflow: 'hidden' }}>
+              <a
+                className="twitter-timeline"
+                data-theme="dark"
+                data-height="400"
+                href="https://twitter.com/stevemojica?ref_src=twsrc%5Etfw"
+              >
+                Tweets by stevemojica
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
