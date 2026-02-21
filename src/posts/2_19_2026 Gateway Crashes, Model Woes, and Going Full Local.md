@@ -1,14 +1,3 @@
----
-slug: 'https://github.com/stevemojica/stevemojica.github.io/blob/master/src/posts/tailscale-termius-mobile-ssh.md'
-category: 'coding'
-label: 'React'
-date: 'Feb 2026'
-readTime: '6 min read'
-title: 'Gateway Crashes, Model Woes, and Going Full Local (Feb 19, 2026
-'
-excerpt: 'gateway crashes'
----
-
 # 🦞 Gateway Crashes, Model Woes, and Going Full Local (Feb 19, 2026)
 
 > **TL;DR:** Three separate issues hit on the same day — a rogue cron job crashing the gateway via an EBADF bug, NVIDIA's Llama 3.3 70B rejecting parallel tool calls, and the gateway not recovering after crashes. All three fixed. Setup is now 100% local on Ollama with a self-healing gateway.
