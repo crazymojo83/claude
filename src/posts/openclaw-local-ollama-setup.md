@@ -1,5 +1,4 @@
 ---
-slug: 'openclaw-local-ollama-setup.md'
 category: 'ai'
 label: 'ollama and openclaw'
 date: 'Jan 2026'

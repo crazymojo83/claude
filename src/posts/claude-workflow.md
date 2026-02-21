@@ -1,5 +1,4 @@
 ---
-slug: 'claude-workflow'
 category: 'ai'
 label: 'Claude AI'
 date: 'Jan 2026'

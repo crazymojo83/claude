@@ -1,5 +1,4 @@
 ---
-slug: 'https://github.com/stevemojica/stevemojica.github.io/blob/master/src/posts/tailscale-termius-mobile-ssh.md'
 category: 'coding'
 label: 'React'
 date: 'Feb 2026'

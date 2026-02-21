@@ -1,6 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import matter from 'gray-matter';
+
+// Custom lightweight YAML frontmatter parser for the browser 
+function parseFrontmatter(markdown) {
+  const match = markdown.match(/^---\n([\s\S]*?)\n---/);
+  if (!match) return { data: {}, content: markdown };
+
+  const yamlString = match[1];
+  const data = {};
+  yamlString.split('\n').forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex > -1) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+      // Remove quotes if present
+      if ((value.startsWith("'") && value.endsWith("'")) || (value.startsWith('"') && value.endsWith('"'))) {
+        value = value.slice(1, -1);
+      }
+      data[key] = value;
+    }
+  });
+
+  return { data, content: markdown.slice(match[0].length).trim() };
+}
 
 function Blog() {
   const [posts, setPosts] = useState([]);
@@ -13,27 +35,31 @@ function Blog() {
       const postsArray = [];
 
       for (const path in markdownFiles) {
-        // Execute the loader function to get the raw module text
-        const rawContent = await markdownFiles[path]();
+        try {
+          // Execute the loader function to get the raw module text
+          const rawContent = await markdownFiles[path]();
 
-        // Parse the YAML frontmatter
-        const { data } = matter(rawContent);
+          // Parse the YAML frontmatter using our browser-safe custom parser
+          const { data } = parseFrontmatter(rawContent);
 
-        // We ensure a 'slug' exists. If it isn't in frontmatter, we extract it from the filename
-        const filenameSlug = path.split('/').pop().replace('.md', '');
-        const slug = data.slug || filenameSlug;
+          // We ensure a 'slug' exists. If it isn't in frontmatter, we extract it from the filename
+          const filenameSlug = path.split('/').pop().replace('.md', '');
+          const slug = data.slug || filenameSlug;
 
-        // Push valid posts
-        if (data.title) {
-          postsArray.push({
-            slug,
-            category: data.category || 'coding',
-            label: data.label || 'Note',
-            date: data.date || '',
-            readTime: data.readTime || '',
-            title: data.title,
-            excerpt: data.excerpt || '',
-          });
+          // Push valid posts
+          if (data.title) {
+            postsArray.push({
+              slug,
+              category: data.category || 'coding',
+              label: data.label || 'Note',
+              date: data.date || '',
+              readTime: data.readTime || '',
+              title: data.title,
+              excerpt: data.excerpt || '',
+            });
+          }
+        } catch (err) {
+          console.error(`Failed to process markdown file ${path}:`, err)
         }
       }
 
