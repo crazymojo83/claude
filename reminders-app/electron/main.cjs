@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, protocol, net } = require('electron');
 const path = require('path');
+const url = require('url');
 
 let mainWindow;
 
@@ -21,11 +22,19 @@ function createWindow() {
   if (process.env.VITE_DEV_SERVER_URL) {
     mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
   } else {
-    mainWindow.loadFile(path.join(__dirname, '../dist/index.html'));
+    mainWindow.loadURL('app://./index.html');
   }
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(() => {
+  protocol.handle('app', (request) => {
+    const filePath = request.url.replace('app://./', '');
+    const fullPath = path.join(__dirname, '..', 'dist', filePath);
+    return net.fetch(url.pathToFileURL(fullPath).toString());
+  });
+
+  createWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();

@@ -8,6 +8,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: './',
+  build: {
+    modulePreload: { polyfill: false },
+  },
   plugins: [
     react(),
     VitePWA({
