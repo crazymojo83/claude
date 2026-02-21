@@ -1,12 +1,30 @@
-import FeedbackButton from './components/FeedbackButton'
+import './styles.css'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Projects from './components/Projects'
+import Skills from './components/Skills'
+import Blog from './components/Blog'
+import Journey from './components/Journey'
+import Contact from './components/Contact'
 
 function App() {
   return (
-    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
-      <h1>My App</h1>
-      <p>Click the button below to give us feedback.</p>
-      <FeedbackButton />
-    </div>
+    <>
+      <Navbar />
+      <Hero />
+      <div className="divider" />
+      <About />
+      <div className="divider" />
+      <Projects />
+      <div className="divider" />
+      <Skills />
+      <div className="divider" />
+      <Blog />
+      <div className="divider" />
+      <Journey />
+      <Contact />
+    </>
   )
 }
 
