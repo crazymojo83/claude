@@ -1,21 +1,14 @@
 ---
-category: 'coding'
-label: 'React'
+slug: 'tailscale-termius-mobile-ssh'
+category: 'devops'
+label: 'Networking'
 date: 'Feb 2026'
 readTime: '4 min read'
-title: 'Mobile SSH Access to Cloud Terminal via Tailscale + Termius
-'
-excerpt: 'accessing claude code remotely'
+title: 'Mobile SSH Access to Cloud Terminal via Tailscale + Termius'
+excerpt: 'How I configured full SSH access to my cloud terminal from my phone using Tailscale and Termius — no port forwarding, no exposed ports, just clean mesh networking.'
 ---
 
-
-
-
-# 📱 Mobile SSH Access to Cloud Terminal via Tailscale + Termius
-
-**Branch:** `claude`  
-**Date:** 2026-02-16  
-**Status:** ✅ Working
+# Mobile SSH Access to Cloud Terminal via Tailscale + Termius
 
 ---
 
@@ -36,7 +29,7 @@ When you're managing multi-campus infrastructure and something decides to have a
 ## The Stack
 
 | Component | Role |
-|-----------|------|
+|---|---|
 | **Tailscale** | Zero-config mesh VPN — connects devices regardless of NAT/firewall |
 | **Termius** | Professional mobile SSH client (iOS/Android) |
 | **SSH** | Good old secure shell, doing what it always does |
@@ -57,6 +50,7 @@ When you're managing multi-campus infrastructure and something decides to have a
 ### 1. Confirm Tailscale is Running on Both Devices
 
 On your server/cloud machine:
+
 ```bash
 tailscale status
 ```
@@ -68,6 +62,7 @@ On your phone: Open the Tailscale app and confirm it shows "Connected" and your 
 ### 2. Verify SSH is Accessible Locally
 
 Before going mobile, confirm SSH works on the machine itself:
+
 ```bash
 # On Linux/Mac
 ssh localhost
@@ -77,6 +72,7 @@ sudo systemctl status ssh
 ```
 
 On Windows, verify OpenSSH Server is installed and running:
+
 ```powershell
 Get-Service -Name sshd
 ```
@@ -87,7 +83,7 @@ Get-Service -Name sshd
 2. Fill in the following:
 
    | Field | Value |
-   |-------|-------|
+   |---|---|
    | **Hostname/IP** | Your Tailscale IP (e.g. `100.64.0.5`) |
    | **Port** | `22` (default SSH) |
    | **Username** | Your server username |
@@ -118,11 +114,13 @@ Now you're in with no password prompt. Slick.
 ## Why Tailscale Instead of Direct SSH?
 
 Good question. The traditional approach would be:
+
 - Open a port on your firewall/router (usually 22)
 - Point DNS or a static IP at it
 - Hope bots don't hammer it
 
 Tailscale sidesteps all of that:
+
 - **No open ports** on your server or router
 - **Encrypted WireGuard tunnel** between devices
 - Works through NAT, CGNAT, corporate firewalls — basically everything
@@ -149,4 +147,4 @@ This is now part of my standard mobile ops workflow alongside the Tailscale app 
 
 ---
 
-*Documented in the `claude` branch as part of ongoing infrastructure workflow automation and mobility improvements.*
+*Part of ongoing infrastructure workflow automation and mobility improvements.*

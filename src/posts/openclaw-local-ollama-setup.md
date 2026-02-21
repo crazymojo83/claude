@@ -1,13 +1,14 @@
 ---
+slug: 'openclaw-local-ollama-setup'
 category: 'ai'
-label: 'ollama and openclaw'
+label: 'OpenClaw'
 date: 'Jan 2026'
 readTime: '8 min read'
 title: 'Running OpenClaw with Local Ollama LLMs (No API Key Required)'
-excerpt: 'How i got Local LLM to work with Openclaw'
+excerpt: 'How I configured OpenClaw to run fully local models using Ollama — no cloud dependency, no API keys, full control. Complete step-by-step setup guide included.'
 ---
 
-# 🦞 Running OpenClaw with Local Ollama LLMs (No API Key Required)
+# Running OpenClaw with Local Ollama LLMs (No API Key Required)
 
 > **TL;DR:** OpenClaw defaults to Anthropic's API. You can ditch the cloud dependency and run fully local models using Ollama — but there's a non-obvious config step that will bite you if you skip it. This post documents exactly what we had to do to get it working.
 
@@ -24,6 +25,7 @@ We got this working on Windows with OpenClaw `2026.2.15` and Ollama running on `
 ## Prerequisites
 
 ### What You'll Need
+
 - **OpenClaw** installed (version `2026.2.15` tested)
 - **Ollama** running with at least one model pulled
 - Basic familiarity with editing JSON files and running PowerShell
@@ -35,6 +37,7 @@ ollama list
 ```
 
 Example output from our setup:
+
 ```
 NAME                 ID              SIZE      MODIFIED
 llama3.2:latest      a80c4f17acd5    2.0 GB    ✓
@@ -45,6 +48,7 @@ gpt-oss:20b          17052f91a42e    13 GB     ✓
 ```
 
 Also confirm the endpoint is accessible:
+
 ```powershell
 curl http://localhost:11434/api/tags
 ```
@@ -91,6 +95,7 @@ This creates a profile called `ollama:manual` in OpenClaw's config.
 Here's the part that isn't obvious: the auth profile created above is **missing the endpoint URL**. Without it, OpenClaw has no idea where to send requests.
 
 Open the file:
+
 ```powershell
 notepad C:\Users\<yourusername>\.openclaw\agents\main\agent\auth-profiles.json
 ```
@@ -122,7 +127,7 @@ Replace the contents with this:
 
 The magic line is `"baseURL": "http://127.0.0.1:11434"`. Without it, nothing works.
 
-> ⚠️ **Note:** If `auth-profiles.json` doesn't exist yet, you'll need to create it. The directory path is:
+> **Note:** If `auth-profiles.json` doesn't exist yet, you'll need to create it. The directory path is:
 > `C:\Users\<yourusername>\.openclaw\agents\main\agent\`
 
 ---
@@ -138,17 +143,19 @@ openclaw models set ollama/qwen3:8b
 > **Watch the prefix!** If you run `openclaw models set qwen3:8b` without `ollama/`, it may default to `anthropic/qwen3:8b` — which defeats the whole purpose.
 
 Verify:
+
 ```powershell
 openclaw models status
 ```
 
 Expected output:
+
 ```
 Model                 Input  Ctx   Local  Auth           Tags
 ollama/qwen3:8b       -      -     -      ollama:manual  default
 ```
 
-If the Auth column shows `ollama:manual` and there's no `missing` tag — you're done. 🎉
+If the Auth column shows `ollama:manual` and there's no `missing` tag — you're done.
 
 ---
 
@@ -218,8 +225,6 @@ For reference, here's our complete working auth profile:
 Once it's working, it's solid. The combination of OpenClaw's agentic tooling with a locally-hosted model is genuinely powerful — and the privacy story is hard to beat. No data leaving your network, no API costs, and you can hot-swap models as needed.
 
 If you're running VRAM-heavy models (14B+), make sure your GPU is handling inference — you can check with `ollama ps` to see what's loaded and whether it's on GPU or CPU. The performance difference is significant.
-
-Happy to answer questions in the comments — this repo is tracking our full OpenClaw journey as we push it further.
 
 ---
 
