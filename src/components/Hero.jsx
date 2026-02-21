@@ -2,7 +2,9 @@ function Hero() {
   return (
     <section className="hero" id="hero">
       <div className="hero-content">
-        <div className="hero-avatar">&#128187;</div>
+        <div className="hero-avatar">
+          <img src="/avatar.jpg" alt="Steve Mojica" className="hero-avatar-img" />
+        </div>
 
         <div className="hero-status">
           <span className="status-dot" />

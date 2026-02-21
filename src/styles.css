@@ -19,36 +19,31 @@
   --text-secondary: #9aa5b1;
   --text-tertiary: #616e7c;
 
-  /* Vibrant Accents */
-  --accent: #dc143c;
-  /* Crimson Red */
-  --accent-hover: #ff3b60;
-  --accent-blue: #2b6cb0;
+  /* Vibrant Accents - Cyberpunk Shift */
+  --accent: #f43f5e;
+  /* Rose/Magenta to match right side lighting */
+  --accent-hover: #fb7185;
+  --accent-blue: #38bdf8;
+  /* Cyan to match left side lighting */
 
   /* Utility colors mapped to a unified premium tech palette */
-  /* Instead of pure ROYGBIV, we use complementing shades of slate, subtle cyan, and ruby */
   --green: #4ade80;
-  /* Subtle seafoam for statuses instead of pure green */
   --green-dim: rgba(74, 222, 128, 0.15);
   --orange: #f43f5e;
-  /* Mapped to a rose/ruby to complement the crimson */
   --purple: #6366f1;
-  /* Deep indigo */
   --pink: #e11d48;
-  /* Ruby red */
   --red: #be123c;
-  /* Dark crimson */
   --cyan: #38bdf8;
-  /* Tech sky blue */
 
   /* Gradients & Shadows - Refined for depth and glassmorphism */
-  --gradient-accent: linear-gradient(135deg, #e11d48 0%, #dc143c 100%);
-  --gradient-hero: linear-gradient(180deg, rgba(220, 20, 60, 0.03) 0%, rgba(10, 14, 20, 1) 35%, rgba(10, 14, 20, 1) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--cyan) 0%, var(--accent) 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(56, 189, 248, 0.03) 0%, rgba(10, 14, 20, 1) 35%, rgba(10, 14, 20, 1) 100%);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.5), 0 4px 12px -2px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 16px 32px -4px rgba(0, 0, 0, 0.6), 0 8px 16px -2px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 25px rgba(220, 20, 60, 0.08), inset 0 0 12px rgba(220, 20, 60, 0.03);
-  --shadow-glow-hover: 0 0 35px rgba(220, 20, 60, 0.15), inset 0 0 20px rgba(220, 20, 60, 0.08);
+  /* Use Magenta/Cyan for the global ambient glows */
+  --shadow-glow: 0 0 25px rgba(244, 63, 94, 0.10), inset 0 0 12px rgba(56, 189, 248, 0.05);
+  --shadow-glow-hover: 0 0 35px rgba(244, 63, 94, 0.20), inset 0 0 20px rgba(56, 189, 248, 0.10);
 
   /* Borders */
   --radius-sm: 10px;
@@ -251,10 +246,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3.5rem;
-  color: var(--accent);
   box-shadow: var(--shadow-glow);
   position: relative;
+  transition: all var(--transition);
+  /* The padding ensures the image doesn't bleed over the borders */
+  padding: 4px;
+}
+
+.hero-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* Make the image itself round */
+  object-fit: cover;
+  /* Guarantees the image covers the circle without distortion */
   transition: all var(--transition);
 }
 
