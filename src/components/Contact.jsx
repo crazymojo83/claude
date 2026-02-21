@@ -1,25 +1,4 @@
-import { useEffect } from 'react';
-
 function Contact() {
-  useEffect(() => {
-    // If the window object already has twttr, instruct it to parse the new anchors
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load();
-    } else {
-      // Otherwise inject the script. Wait for it to load to parse the embedded timeline.
-      const script = document.createElement("script");
-      script.src = "https://platform.twitter.com/widgets.js";
-      script.async = true;
-      script.charSet = "utf-8";
-      document.body.appendChild(script);
-
-      return () => {
-        if (document.body.contains(script)) {
-          document.body.removeChild(script);
-        }
-      };
-    }
-  }, []);
 
   return (
     <>
@@ -60,7 +39,7 @@ function Contact() {
             href="mailto:stevemojica@users.noreply.github.com"
             className="contact-link"
           >
-            &#9993; Email
+            &#128231; Email
           </a>
           <a
             href="https://twitter.com/stevemojica"
@@ -88,7 +67,6 @@ function Contact() {
               <a
                 className="twitter-timeline"
                 data-theme="dark"
-                data-height="400"
                 href="https://twitter.com/SteveMojica?ref_src=twsrc%5Etfw"
               >
                 Tweets by SteveMojica
