@@ -1,33 +1,33 @@
 const TIMELINE = [
   {
-    date: '2026 — Present',
-    title: 'AI-Augmented Leadership',
-    desc: 'Integrating Claude AI across team workflows. Building open-source tools for AI-assisted development and sharing the playbook with the community.',
+    date: 'Mar 2022 — Present',
+    title: 'Director of Information Technology @ Redlands Christian Schools',
+    desc: 'Leading all aspects of IT operations for a multi-campus private school system. Driving infrastructure upgrades (2Gbps fiber links), strategic planning, strict cybersecurity protocols (MFA), and operational efficiency while mentoring a dedicated Tier 1–3 IT team within a Christ-centered culture.',
   },
   {
-    date: '2024 — 2025',
-    title: 'OpenClaw Contributor',
-    desc: 'Discovered OpenClaw and began contributing plugins, documentation, and community tools. Found a passionate community at the intersection of law and code.',
+    date: 'Oct 2019 — Apr 2022',
+    title: 'Lead IT Consultant @ California State Polytechnic University-Pomona',
+    desc: 'Provided lead direction, SLA oversight, and Tier-3 technical support for professional staff and student assistants. Coordinated complex classroom technology deployments via SCCM and JAMF, and managed centralized campus control systems.',
   },
   {
-    date: '2022 — 2024',
-    title: 'IT Director',
-    desc: 'Stepped into a director role overseeing infrastructure, security, and application development. Led cloud migration and modernized the engineering culture.',
+    date: 'Jun 2017 — Oct 2019',
+    title: 'Equipment Specialist II @ California State Polytechnic University-Pomona',
+    desc: 'Delivered technical support, maintenance, and setup of advanced audio/visual presentation solutions and smart classroom environments. Configured computing environments and coordinated directly with faculty to quickly resolve presentation issues.',
   },
   {
-    date: '2018 — 2022',
-    title: 'Senior IT Manager',
-    desc: 'Managed cross-functional teams, delivered major platform initiatives, and established DevOps practices across the organization.',
+    date: 'Mar 2015 — Jun 2017',
+    title: 'Systems Support Technician @ Maranatha High School',
+    desc: 'Provided one-on-one technology consultancy while deploying hardware, testing network servers, and resolving escalated support tickets. Managed AD deployments and audiovisual integrations across the campus.',
   },
   {
-    date: '2014 — 2018',
-    title: 'Systems Engineer & Team Lead',
-    desc: 'Hands-on infrastructure and development work. Built automation frameworks, managed production systems, and started leading small teams.',
+    date: 'Sep 2008 — Mar 2015',
+    title: 'Support Desk Student Manager @ Azusa Pacific University',
+    desc: 'Managed the university helpdesk operations and rigorous SLA thresholds. Architected internal knowledge bases via Confluence, administered critical systems, and managed hardware repairs across multiple regional centers.',
   },
   {
-    date: '2010 — 2014',
-    title: 'The Beginning',
-    desc: 'Started in IT support, quickly moved into systems administration and development. Fell in love with solving problems through code.',
+    date: 'Sep 2005 — Aug 2008',
+    title: 'Support Tech I @ Azusa Pacific University',
+    desc: 'Served as closing supervisor to a busy call center, managing a team of 4 employees and establishing foundational work knowledge bases for the university IT team.',
   },
 ]
 
