@@ -1,4 +1,18 @@
+import { useEffect } from 'react';
+
 function Contact() {
+  useEffect(() => {
+    // Twitter's widgets.js (loaded in index.html) may fire before React
+    // renders this component. Poll briefly then trigger a re-scan.
+    const interval = setInterval(() => {
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load();
+        clearInterval(interval);
+      }
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
