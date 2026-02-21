@@ -1,3 +1,16 @@
+---
+slug: 'my-new-post-url'
+category: 'coding'
+label: 'React'
+date: 'Mar 2026'
+readTime: '4 min read'
+title: 'Your Amazing Blog Title'
+excerpt: 'A brief sentence explaining what the post is about.'
+---
+
+
+
+
 # 📱 Mobile SSH Access to Cloud Terminal via Tailscale + Termius
 
 **Branch:** `claude`  
