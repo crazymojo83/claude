@@ -1,12 +1,11 @@
 ---
-slug: 'https://github.com/stevemojica/stevemojica.github.io/blob/master/src/posts/tailscale-termius-mobile-ssh.md'
-category: 'coding'
+slug: 'https://github.com/stevemojica/stevemojica.github.io/blob/master/src/posts/2_2_2026%20Using%20Local%20LLMs%20on%20OpenClaw.txt'
+category: 'LLM'
 label: 'React'
 date: 'Feb 2026'
 readTime: '6 min read'
-title: 'Gateway Crashes, Model Woes, and Going Full Local (Feb 19, 2026
-'
-excerpt: 'gateway crashes'
+title: 'Journey Update: Using Local LLMs'
+excerpt: 'Local LLM'
 ---
 
 
