@@ -1,11 +1,12 @@
 ---
-slug: 'my-new-post-url'
+slug: '[my-new-post-url](https://github.com/stevemojica/stevemojica.github.io/blob/master/src/posts/tailscale-termius-mobile-ssh.md)'
 category: 'coding'
 label: 'React'
-date: 'Mar 2026'
+date: 'Feb 2026'
 readTime: '4 min read'
-title: 'Your Amazing Blog Title'
-excerpt: 'A brief sentence explaining what the post is about.'
+title: 'Mobile SSH Access to Cloud Terminal via Tailscale + Termius
+'
+excerpt: 'accessing claude code remotely'
 ---
 
 
