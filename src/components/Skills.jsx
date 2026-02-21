@@ -61,6 +61,7 @@ const CATEGORIES = [
     icon: '&#128188;', // Briefcase
     name: 'Leadership & IT Strategy',
     skills: [
+      { name: 'Staff Management & Team Building', domains: ['mgmt'] },
       { name: 'Strategic Budgeting & Planning', domains: ['mgmt'] },
       { name: 'Tier 1-3 Support Mentorship', domains: ['mgmt', 'infra'] },
       { name: 'SLA Development & Ticketing', domains: ['mgmt'] },
