@@ -80,38 +80,18 @@ function Contact() {
           </a>
         </div>
 
-        {/* Side-by-Side Social Media Previews */}
-        <div className="social-embeds-grid">
-          {/* Threads Custom Block (Pending Official Meta Widget API) */}
-          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
-            <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on Threads</h3>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
-              <p style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                Join the conversation on AI agents, homelab infrastructure, and technology leadership.
-              </p>
-              <a
-                href="https://www.threads.com/@stevemojica?hl=en"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link"
-                style={{ margin: '0 auto' }}
-              >
-                &#128172; Follow on Threads
-              </a>
-            </div>
-          </div>
-
-          {/* Twitter (X) Official Embed */}
-          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
+        {/* Centered Social Media Embed (X / Twitter) */}
+        <div className="social-embed-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+          <div className="embed-card hoverable-embed" style={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
             <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on X</h3>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', width: '100%', overflow: 'hidden' }}>
+            <div className="embed-inner" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', overflow: 'hidden', transition: 'all var(--transition)' }}>
               <a
                 className="twitter-timeline"
                 data-theme="dark"
                 data-height="400"
-                href="https://twitter.com/stevemojica?ref_src=twsrc%5Etfw"
+                href="https://twitter.com/SteveMojica?ref_src=twsrc%5Etfw"
               >
-                Tweets by stevemojica
+                Tweets by SteveMojica
               </a>
             </div>
           </div>

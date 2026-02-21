@@ -745,10 +745,24 @@ body {
 }
 
 .embed-card {
-  flex: 1 1 calc(50% - 0.5rem);
+  flex: 1 1 100%;
   min-width: 320px;
   max-width: 100%;
   box-sizing: border-box;
+}
+
+.hoverable-embed {
+  transition: all var(--transition);
+}
+
+.hoverable-embed:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.hoverable-embed:hover .embed-inner {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: var(--shadow-glow-hover);
+  background: var(--bg-card-hover) !important;
 }
 
 .skills-grid {
