@@ -83,9 +83,9 @@ function Contact() {
         {/* Side-by-Side Social Media Previews */}
         <div className="social-embeds-grid">
           {/* Threads Custom Block (Pending Official Meta Widget API) */}
-          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', minHeight: '400px' }}>
+          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
             <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on Threads</h3>
-            <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)' }}>
               <p style={{ color: 'var(--text-primary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
                 Join the conversation on AI agents, homelab infrastructure, and technology leadership.
               </p>
@@ -102,9 +102,9 @@ function Contact() {
           </div>
 
           {/* Twitter (X) Official Embed */}
-          <div className="embed-card" style={{ minHeight: '400px' }}>
+          <div className="embed-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
             <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on X</h3>
-            <div style={{ width: '100%', overflow: 'hidden' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', width: '100%', overflow: 'hidden' }}>
               <a
                 className="twitter-timeline"
                 data-theme="dark"
