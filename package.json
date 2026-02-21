@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/crazymojo83/claude#readme",
   "dependencies": {
-    "gray-matter": "^4.0.3",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-github-calendar": "^5.0.5",
