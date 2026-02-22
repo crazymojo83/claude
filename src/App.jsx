@@ -9,6 +9,9 @@ import Blog from './components/Blog'
 import Journey from './components/Journey'
 import Contact from './components/Contact'
 import BlogPost from './components/BlogPost'
+import SocialPostGenerator from './components/SocialPostGenerator'
+import Tools from './components/Tools'
+import ToolDetail from './components/ToolDetail'
 
 function HomePage() {
   return (
@@ -36,6 +39,9 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/post/:id" element={<BlogPost />} />
+      <Route path="/tools" element={<Tools />} />
+      <Route path="/tools/:slug" element={<ToolDetail />} />
+      <Route path="/social" element={<SocialPostGenerator />} />
     </Routes>
   )
 }

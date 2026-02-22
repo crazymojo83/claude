@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about' },
@@ -6,6 +7,7 @@ const NAV_ITEMS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Thoughts', href: '#blog' },
   { label: 'Journey', href: '#journey' },
+  { label: 'Tools', href: '/tools', isRoute: true },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -23,9 +25,15 @@ function Navbar() {
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <a href={item.href} onClick={() => setMenuOpen(false)}>
-                {item.label}
-              </a>
+              {item.isRoute ? (
+                <Link to={item.href} onClick={() => setMenuOpen(false)}>
+                  {item.label}
+                </Link>
+              ) : (
+                <a href={item.href} onClick={() => setMenuOpen(false)}>
+                  {item.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>

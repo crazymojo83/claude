@@ -1390,6 +1390,226 @@ body {
 }
 
 /* ============================================
+   Tools & Artifacts Pages
+   ============================================ */
+
+.tools-page,
+.tool-detail-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+  min-height: 100vh;
+}
+
+.tools-nav {
+  margin-bottom: 2rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.tool-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.tool-card:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-glow-hover);
+  transform: translateY(-4px) scale(1.02);
+  background: var(--bg-card-hover);
+}
+
+.tool-card:hover::before {
+  opacity: 1;
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.tool-card-category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.tool-card-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.tool-card-tagline {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.tool-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1.25rem;
+}
+
+.tool-card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tool-card-link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: gap var(--transition);
+}
+
+.tools-coming-soon {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  font-style: italic;
+}
+
+/* ── Tool Detail Page ── */
+
+.tool-detail-header {
+  margin-bottom: 2.5rem;
+}
+
+.tool-detail-name {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tool-detail-tagline {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.tool-detail-launch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.tool-detail-launch:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.tool-detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.tool-detail-section {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.tool-detail-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.tool-detail-features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.tool-detail-features li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 0.925rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.tool-detail-features li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 0.5em;
+}
+
+.tool-detail-container.error-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-secondary);
+}
+
+/* ============================================
    Responsive
    ============================================ */
 
@@ -1430,7 +1650,8 @@ body {
   }
 
   .projects-grid,
-  .blog-grid {
+  .blog-grid,
+  .tools-grid {
     grid-template-columns: 1fr;
   }
 
