@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Steve Mojica | Blog &amp; Portfolio</title>
+    <link>https://stevemojica.github.io</link>
+    <description>Thoughts on coding, open-source work, AI, and professional IT life.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Feb 2026 18:14:50 GMT</lastBuildDate>
+    <atom:link href="https://stevemojica.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gateway Crashes, Model Woes, and Going Full Local</title>
+      <link>https://stevemojica.github.io/post/gateway-crashes-model-woes-going-full-local</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/gateway-crashes-model-woes-going-full-local</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      <description>Three separate issues hit on the same day — a rogue cron job crashing the gateway, NVIDIA model limitations, and unrecoverable crashes. All three fixed, now running 100% local on Ollama.</description>
+      <category>ai</category>
+    </item>
+    <item>
+      <title>How I Launched a Full Portfolio Site with Claude Code and Google Antigravity</title>
+      <link>https://stevemojica.github.io/post/launching-portfolio-with-claude-code-and-github-pages</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/launching-portfolio-with-claude-code-and-github-pages</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      <description>2,566 lines of code, 21 files, 50 commits — a complete React + Vite portfolio deployed on GitHub Pages with Claude AI as my pair programmer. Zero hosting costs, no CS degree required.</description>
+      <category>ai</category>
+    </item>
+    <item>
+      <title>Every Skill We Added to OpenClaw — and Every Wall We Hit Along the Way</title>
+      <link>https://stevemojica.github.io/post/openclaw-skills-journey</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/openclaw-skills-journey</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      <description>A full breakdown of the skills and capabilities we built into our OpenClaw setup — local model routing, gateway hardening, model fallback chains, cron management, and more — plus every issue we ran into and how we fixed them.</description>
+      <category>ai</category>
+    </item>
+    <item>
+      <title>Mobile SSH Access to Cloud Terminal via Tailscale + Termius</title>
+      <link>https://stevemojica.github.io/post/tailscale-termius-mobile-ssh</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/tailscale-termius-mobile-ssh</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      <description>How I configured full SSH access to my cloud terminal from my phone using Tailscale and Termius — no port forwarding, no exposed ports, just clean mesh networking.</description>
+      <category>devops</category>
+    </item>
+    <item>
+      <title>The Race to Build a Local Agent: Why Claude Blocked OpenClaw and What Comes Next</title>
+      <link>https://stevemojica.github.io/post/the-race-to-build-a-local-agent</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/the-race-to-build-a-local-agent</guid>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 GMT</pubDate>
+      <description>Anthropic cut off OpenClaw from using Claude tokens. I think a failed deal and a founder jumping to OpenAI explains everything — and now it is a race to build the definitive local agent.</description>
+      <category>ai</category>
+    </item>
+    <item>
+      <title>My Claude Code Workflow: From Idea to Production</title>
+      <link>https://stevemojica.github.io/post/claude-code-workflow</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/claude-code-workflow</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate>
+      <description>How I use Claude AI as a force multiplier for development. Real examples of prompts, workflows, and the surprising ways AI has changed how I think about code architecture.</description>
+      <category>ai</category>
+    </item>
+    <item>
+      <title>Running OpenClaw with Local Ollama LLMs (No API Key Required)</title>
+      <link>https://stevemojica.github.io/post/openclaw-local-ollama-setup</link>
+      <guid isPermaLink="true">https://stevemojica.github.io/post/openclaw-local-ollama-setup</guid>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 GMT</pubDate>
+      <description>How I configured OpenClaw to run fully local models using Ollama — no cloud dependency, no API keys, full control. Complete step-by-step setup guide included.</description>
+      <category>ai</category>
+    </item>
+  </channel>
+</rss>

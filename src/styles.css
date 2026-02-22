@@ -474,6 +474,26 @@ body {
   max-width: 600px;
 }
 
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.rss-link:hover {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--accent-hover);
+}
+
 .divider {
   height: 1px;
   background: var(--border);
