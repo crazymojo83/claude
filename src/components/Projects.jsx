@@ -69,7 +69,7 @@ function Projects() {
                   {repo.stargazers_count > 5 ? 'Featured' : 'Public'}
                 </span>
               </div>
-              <div className="project-name" style={{ wordBreak: 'break-all' }}>{repo.name}</div>
+              <div className="project-name" style={{ overflowWrap: 'break-word' }}>{repo.name}</div>
               <div className="project-desc" style={{ flexGrow: 1 }}>
                 {repo.description || 'No description provided on GitHub.'}
               </div>

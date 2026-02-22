@@ -1,12 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 function Contact() {
+  const embedRef = useRef(null);
+
   useEffect(() => {
     // Twitter's widgets.js (loaded in index.html) may fire before React
     // renders this component. Poll briefly then trigger a re-scan.
+    let attempts = 0;
+    const maxAttempts = 20; // 10 seconds max
     const interval = setInterval(() => {
+      attempts++;
       if (window.twttr && window.twttr.widgets) {
-        window.twttr.widgets.load();
+        window.twttr.widgets.load(embedRef.current);
+        clearInterval(interval);
+      } else if (attempts >= maxAttempts) {
         clearInterval(interval);
       }
     }, 500);
@@ -16,7 +23,6 @@ function Contact() {
 
   return (
     <>
-      <div className="divider" />
       <section className="contact-section" id="contact">
         <div className="section-label" style={{ justifyContent: 'center' }}>
           Get In Touch
@@ -75,12 +81,18 @@ function Contact() {
 
         {/* Centered Social Media Embed (X / Twitter) */}
         <div className="social-embed-container" style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
-          <div className="embed-card hoverable-embed" style={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center', minHeight: '400px' }}>
+          <div className="embed-card hoverable-embed" style={{ width: '100%', maxWidth: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', textAlign: 'center' }}>
             <h3 style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>Latest on X</h3>
-            <div className="embed-inner" style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', overflow: 'hidden', transition: 'all var(--transition)' }}>
+            <div
+              ref={embedRef}
+              className="embed-inner"
+              style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', transition: 'all var(--transition)', overflow: 'auto' }}
+            >
               <a
                 className="twitter-timeline"
                 data-theme="dark"
+                data-height="500"
+                data-width="100%"
                 href="https://twitter.com/SteveMojica?ref_src=twsrc%5Etfw"
               >
                 Tweets by SteveMojica
