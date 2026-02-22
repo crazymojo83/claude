@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import tools from '../tools/registry'
+import tools from '../tools/social-post-generator'
 
 const CATEGORY_COLORS = {
   Content: { bg: 'rgba(56, 189, 248, 0.1)', color: '#38bdf8', border: 'rgba(56, 189, 248, 0.2)' },

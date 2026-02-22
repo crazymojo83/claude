@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import tools from '../tools/registry'
+import tools from '../tools/social-post-generator'
 
 export default function ToolDetail() {
   const { slug } = useParams()
