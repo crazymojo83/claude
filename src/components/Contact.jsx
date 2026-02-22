@@ -1,24 +1,56 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Contact() {
   const embedRef = useRef(null);
+  const [embedFailed, setEmbedFailed] = useState(false);
 
   useEffect(() => {
-    // If widgets.js already ran (e.g. navigating back to this page),
-    // just tell it to process the anchor we just mounted.
-    if (window.twttr && window.twttr.widgets) {
-      window.twttr.widgets.load(embedRef.current);
-      return;
+    const container = embedRef.current;
+    if (!container) return;
+
+    let timeoutId;
+
+    function processEmbed() {
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load(container);
+      }
     }
 
-    // First visit: inject the script now, AFTER the <a> is in the DOM.
-    // This mirrors exactly how Twitter's own embed snippet works.
-    const script = document.createElement('script');
-    script.id = 'twitter-wjs';
-    script.src = 'https://platform.twitter.com/widgets.js';
-    script.async = true;
-    script.charset = 'utf-8';
-    document.body.appendChild(script);
+    // Show fallback if iframe never appears after 15 seconds
+    timeoutId = setTimeout(() => {
+      if (container && !container.querySelector('iframe')) {
+        setEmbedFailed(true);
+      }
+    }, 15000);
+
+    // Script already loaded (e.g. navigating back to this page)
+    if (window.twttr && window.twttr.widgets) {
+      processEmbed();
+      return () => clearTimeout(timeoutId);
+    }
+
+    // First visit: set up twttr ready queue, then inject the script
+    window.twttr = window.twttr || {};
+    if (!window.twttr.ready) {
+      window.twttr._e = window.twttr._e || [];
+      window.twttr.ready = function (f) { this._e.push(f); };
+    }
+    window.twttr.ready(() => {
+      processEmbed();
+      clearTimeout(timeoutId);
+    });
+
+    if (!document.getElementById('twitter-wjs')) {
+      const script = document.createElement('script');
+      script.id = 'twitter-wjs';
+      script.src = 'https://platform.twitter.com/widgets.js';
+      script.async = true;
+      script.charset = 'utf-8';
+      script.onerror = () => setEmbedFailed(true);
+      document.body.appendChild(script);
+    }
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   return (
@@ -88,14 +120,29 @@ function Contact() {
               className="embed-inner"
               style={{ background: 'rgba(255,255,255,0.02)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border)', transition: 'all var(--transition)', overflow: 'auto' }}
             >
-              <a
-                className="twitter-timeline"
-                data-theme="dark"
-                data-height="500"
-                href="https://twitter.com/SteveMojica?ref_src=twsrc%5Etfw"
-              >
-                Tweets by SteveMojica
-              </a>
+              {embedFailed ? (
+                <div style={{ padding: '2rem', color: 'var(--text-secondary)', textAlign: 'center' }}>
+                  <p style={{ marginBottom: '1rem' }}>Timeline could not be loaded.</p>
+                  <a
+                    href="https://x.com/SteveMojica"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-link"
+                    style={{ display: 'inline-block' }}
+                  >
+                    &#128172; Follow @SteveMojica on X
+                  </a>
+                </div>
+              ) : (
+                <a
+                  className="twitter-timeline"
+                  data-theme="dark"
+                  data-height="500"
+                  href="https://twitter.com/SteveMojica?ref_src=twsrc%5Etfw"
+                >
+                  Tweets by SteveMojica
+                </a>
+              )}
             </div>
           </div>
         </div>
