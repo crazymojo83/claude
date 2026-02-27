@@ -62,6 +62,58 @@ Use a dark theme (slate/navy palette). Make it mobile-friendly.
 
 Visit the [live tool](/social) to use it directly in your browser.`,
   },
+  {
+    slug: "zendesk-dashboard",
+    name: "Zendesk Ticket Dashboard",
+    tagline: "Live ticket workload reporting for IT leaders",
+    description:
+      "Real-time dashboard for Zendesk tickets with daily/weekly/monthly views, category breakdowns, trend analysis, and operations health metrics. Built for IT directors who need a finger on the pulse.",
+    category: "Productivity",
+    icon: "bar-chart-2",
+    features: [
+      "Daily, weekly, and monthly ticket workload views",
+      "Live auto-refresh with configurable intervals (5/10/15/30 min)",
+      "Summary cards: open, pending, solved, backlog, avg age, one-touch rate",
+      "Ticket trend charts (created vs solved over time)",
+      "Status, priority, and channel distribution charts",
+      "Auto-detected tag/category breakdown",
+      "Group and assignee distribution with toggle",
+      "Busiest hours heatmap (day x hour)",
+      "Sortable ticket table with direct Zendesk links",
+      "API rate limit tracking and usage indicator",
+      "Glassmorphism dark theme matching your portfolio",
+    ],
+    usage: `## How to Use
+
+1. **Connect** — Enter your Zendesk subdomain, email, and API token
+2. **Enable CORS** — In Zendesk Admin Center, allow your site's origin
+3. **Browse** — Switch between Today, This Week, and This Month views
+4. **Analyze** — Charts auto-populate showing status, priority, tags, groups, channels, and trends
+5. **Click tickets** — Table rows open directly in Zendesk
+6. **Auto-refresh** — Dashboard refreshes every 5 minutes by default (configurable)
+
+### Hosting Locally
+
+\`\`\`bash
+npm run build
+npx serve dist
+\`\`\`
+
+The built \`dist/\` folder can also be uploaded to SharePoint or any static file host.`,
+    claudeInstructions: `## Setup Requirements
+
+### Zendesk API Token
+1. Go to **Admin Center** → Apps & Integrations → APIs → Zendesk API
+2. Enable **Token Access**
+3. Click **Add API token** and copy it
+
+### Enable CORS
+1. Go to **Admin Center** → Account → Security
+2. Add your site's origin (e.g., \`http://localhost:3000\` or your production URL)
+
+### Launch
+Visit the [live dashboard](/zendesk) to get started.`,
+  },
 ];
 
 export default tools;

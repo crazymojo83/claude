@@ -30,7 +30,7 @@ export default function ToolDetail() {
       <div className="tool-detail-header">
         <h1 className="tool-detail-name">{tool.name}</h1>
         <p className="tool-detail-tagline">{tool.tagline}</p>
-        <Link to={`/${tool.slug === 'social-post-generator' ? 'social' : `tools/${tool.slug}/app`}`} className="tool-detail-launch">
+        <Link to={`/${tool.slug === 'social-post-generator' ? 'social' : tool.slug === 'zendesk-dashboard' ? 'zendesk' : `tools/${tool.slug}/app`}`} className="tool-detail-launch">
           Launch Tool &rarr;
         </Link>
       </div>

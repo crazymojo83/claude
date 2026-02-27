@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './styles.css'
 import Navbar from './components/Navbar'
@@ -13,6 +14,8 @@ import SocialPostGenerator from './components/SocialPostGenerator'
 import Tools from './components/Tools'
 import ToolDetail from './components/ToolDetail'
 import ClaudePlugins from './components/ClaudePlugins'
+
+const ZendeskDashboard = lazy(() => import('./components/zendesk/ZendeskDashboard'))
 
 function HomePage() {
   return (
@@ -45,6 +48,7 @@ function App() {
       <Route path="/tools" element={<Tools />} />
       <Route path="/tools/:slug" element={<ToolDetail />} />
       <Route path="/social" element={<SocialPostGenerator />} />
+      <Route path="/zendesk" element={<Suspense fallback={<div className="zd-loading"><p>Loading dashboard...</p></div>}><ZendeskDashboard /></Suspense>} />
     </Routes>
   )
 }
