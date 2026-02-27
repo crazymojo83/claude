@@ -55,7 +55,14 @@ function buildAuthHeader(creds) {
 }
 
 async function zdFetch(creds, path, options = {}) {
-  const url = path.startsWith('http') ? path : `${buildBaseUrl(creds)}${path}`
+  const directUrl = path.startsWith('http') ? path : `${buildBaseUrl(creds)}${path}`
+
+  // In development, route through the Vite proxy to avoid CORS issues
+  const isDev = import.meta.env?.DEV
+  const url = isDev
+    ? `/zendesk-proxy?url=${encodeURIComponent(directUrl)}`
+    : directUrl
+
   const res = await fetch(url, {
     ...options,
     headers: {
