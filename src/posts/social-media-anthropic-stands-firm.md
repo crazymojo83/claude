@@ -11,14 +11,14 @@ excerpt: 'Ready-to-post social media content for Twitter/X and Threads reflectin
 
 ## Twitter / X (280 character limit)
 
-**Character count: ~268**
+**Character count: ~267**
 
-> Anthropic refused to let Claude power mass surveillance or autonomous weapons — even after the Pentagon threatened to blacklist them. Other AI companies took that contract the same day. This is why I use Claude. My tools should reflect my values. #Anthropic #Claude #AI
+> Anthropic said no to mass surveillance and autonomous weapons. They got called "woke" and "radical left" for it. Since when is "don't spy on Americans" a political stance? That's not left or right. That's common sense. I'm staying with Claude. #Anthropic #Claude #AI
 
 ---
 
 ## Threads (500 character limit)
 
-**Character count: ~479**
+**Character count: ~496**
 
-> Anthropic refused to let Claude be used for mass surveillance of U.S. citizens or fully autonomous weapons — even when the Pentagon threatened to blacklist them and the president ordered agencies to stop using their products. Within hours, other AI companies rushed to fill that contract. That says everything. The AI I use every day is built by people who believe some lines shouldn't be crossed. That matters to me. My tools should reflect my values. #Anthropic #Claude #AI #Ethics
+> Anthropic refused to let Claude be used for mass surveillance of Americans or autonomous weapons. The response? They got called "radical left" and "woke." I'm not entirely left. I'm not entirely right. But I know that not wanting AI to spy on citizens or run weapons without human control isn't a political position — it's a human one. Disagreeing with how power wants to use technology doesn't make you radical. It means you're paying attention. Staying with Claude. #Anthropic #Claude #AI #Ethics
